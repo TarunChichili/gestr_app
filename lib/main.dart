@@ -6,9 +6,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.lightGreen,
       ),
       home: MyHomePage(),
     );
@@ -36,18 +36,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    dataList = [
-      Data(1, false, "Example-1"),
-      Data(2, false, "Example-2"),
-      Data(3, false, "Example-3"),
-      Data(4, false, "Example-4"),
-      Data(5, false, "Example-5"),
-      Data(6, false, "Example-6"),
-      Data(7, false, "Example-7"),
-      Data(8, false, "Example-8"),
-      Data(9, false, "Example-9"),
-      Data(10, false, "Example-10"),
-    ];
     one = PageOne(
       key: keyOne,
       dataList: dataList,
@@ -67,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Persistance Example"),
+        title: Text("Gestr"),
       ),
       body: PageStorage(
         child: currentPage,
@@ -110,35 +98,35 @@ class PageOne extends StatefulWidget {
 class PageOneState extends State<PageOne> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: widget.dataList.length,
-        itemBuilder: (context, index) {
-          return ExpansionTile(
-            key: PageStorageKey('${widget.dataList[index].id}'),
-            title: Text(widget.dataList[index].title),
-            // onExpansionChanged: (b) => setState(() {
-            //       widget.dataList[index].expanded = b;
-            //       PageStorage.of(context).writeState(context, b,
-            //           identifier: ValueKey(
-            //             '${widget.dataList[index].id}',
-            //           ));
-            //     }),
-            // initiallyExpanded: widget.dataList[index].expanded,
-            //  PageStorage.of(context).readState(
-            //           context,
-            //           identifier: ValueKey(
-            //             '${widget.dataList[index].id}',
-            //           ),
-            //         ) ??
-            //     false,
-            children: <Widget>[
-              Container(
-                color: index % 2 == 0 ? Colors.orange : Colors.limeAccent,
-                height: 100.0,
-              ),
-            ],
-          );
-        });
+    return Scaffold(
+        body: Container(
+            margin: const EdgeInsets.only(top: 100.0),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Column(
+                      children: <Widget>[
+                        Text(
+                          'Current Gesture',
+                          style: Theme
+                              .of(context)
+                              .textTheme
+                              .display1,
+                        ),
+
+                        Text(
+                          'Will state current gesture here',
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )
+                      ]
+                  )
+
+                ]
+            )
+        )
+    );
   }
 }
 
@@ -152,19 +140,16 @@ class PageTwo extends StatefulWidget {
 class PageTwoState extends State<PageTwo> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemExtent: 250.0,
-      itemBuilder: (context, index) => Container(
-        padding: EdgeInsets.all(10.0),
-        child: Material(
-          elevation: 4.0,
-          borderRadius: BorderRadius.circular(5.0),
-          color: index % 2 == 0 ? Colors.cyan : Colors.deepOrange,
-          child: Center(
-            child: Text(index.toString()),
-          ),
-        ),
-      ),
+    return Scaffold(
+        body: Container(
+            margin: const EdgeInsets.only(top: 100.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+
+              ]
+            )
+        )
     );
   }
 }
