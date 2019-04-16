@@ -113,7 +113,6 @@ class PageOneState extends State<PageOne> {
                               .textTheme
                               .display1,
                         ),
-
                         Text(
                           'Will state current gesture here',
                           textAlign: TextAlign.center,
@@ -122,7 +121,6 @@ class PageOneState extends State<PageOne> {
                         )
                       ]
                   )
-
                 ]
             )
         )
@@ -146,7 +144,13 @@ class PageTwoState extends State<PageTwo> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-
+                Text(
+                  'Sensor Values',
+                  style: Theme
+                      .of(context)
+                      .textTheme
+                      .display1,
+                ),
               ]
             )
         )
