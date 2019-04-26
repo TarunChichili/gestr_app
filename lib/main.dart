@@ -144,7 +144,6 @@ class PageOneState extends State<PageOne> {
                               .textTheme
                               .display1,
                         ),
-
                         Text(
                           'Will state current gesture here',
                           textAlign: TextAlign.center,
@@ -152,10 +151,16 @@ class PageOneState extends State<PageOne> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         )
                       ]
+                  ),
+                  Column(
+                      children: <Widget>[
+                      ]
                   )
                 ]
             )
-        )
+
+        ),
+
     );
   }
 }
@@ -170,22 +175,6 @@ class PageTwo extends StatefulWidget {
 class PageTwoState extends State<PageTwo> {
   @override
   Widget build(BuildContext context) {
-
-        body: Container(
-            margin: const EdgeInsets.only(top: 100.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Sensor Values',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .display1,
-                ),
-              ]
-            )
-        );
 
     return new Container(
         padding: new EdgeInsets.only(
