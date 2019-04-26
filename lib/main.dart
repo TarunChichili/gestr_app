@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mqtt_client/mqtt_client.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 void main() => runApp(MyApp());
+
+final MqttClient client = MqttClient('test.mosquitto.org', '');
 
 class MyApp extends StatelessWidget {
   @override
@@ -80,6 +84,33 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the Drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Device Management',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40)),
+              decoration: BoxDecoration(
+                color: Colors.lightGreen,
+              ),
+            ),
+            ListTile(
+              title: Text('Glove 1',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+              onTap: () {
+                //_prefix = "http://192.168.1.182:8080/";
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -113,6 +144,7 @@ class PageOneState extends State<PageOne> {
                               .textTheme
                               .display1,
                         ),
+
                         Text(
                           'Will state current gesture here',
                           textAlign: TextAlign.center,
@@ -138,7 +170,7 @@ class PageTwo extends StatefulWidget {
 class PageTwoState extends State<PageTwo> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    /*return Scaffold(
         body: Container(
             margin: const EdgeInsets.only(top: 100.0),
             child: Row(
@@ -154,9 +186,143 @@ class PageTwoState extends State<PageTwo> {
               ]
             )
         )
+    );*/
+    return new Container(
+        padding: new EdgeInsets.only(
+            left: 50.0, right: 20.0, top: 100.0, bottom: 80.0),
+        child: new Column(
+            children: <Widget>[
+              new Expanded(
+                flex: 1,
+                child: new Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      gaugetop()
+                    ]
+                ),
+              ),
+              new Expanded(
+                flex: 1,
+                child: new Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      gaugemiddle()
+                    ]
+                ),
+              ),
+              new Expanded(
+                flex: 1,
+                child: new Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      gaugebottom()
+                    ]
+                ),
+              ),
+            ]
+        )
     );
   }
+
+  Widget gaugetop() {
+    return new Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          new CircularPercentIndicator(
+            radius: 150.0,
+            lineWidth: 20.0,
+            percent: (0 + 0.5),
+            animation: true,
+            animateFromLastPercent: true,
+            animationDuration: 300,
+            center: new Text('Power: ${(1) * 10 }'),
+            progressColor: Colors.orangeAccent,
+          ),
+          new Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+          ),
+          new CircularPercentIndicator(
+            radius: 150.0,
+            lineWidth: 20.0,
+            percent: (0 + 0.5),
+            animation: true,
+            animateFromLastPercent: true,
+            animationDuration: 300,
+            center: new Text('Power: ${(1) * 10 }'),
+            progressColor: Colors.redAccent,
+          ),
+        ]
+    );
+  }
+
+  Widget gaugemiddle() {
+    return new Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          new CircularPercentIndicator(
+            radius: 150.0,
+            lineWidth: 20.0,
+            percent: (0 + 0.5),
+            animation: true,
+            animateFromLastPercent: true,
+            animationDuration: 300,
+            center: new Text('Power: ${(1) * 10 }'),
+            progressColor: Colors.orangeAccent,
+          ),
+          new Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+          ),
+          new CircularPercentIndicator(
+            radius: 150.0,
+            lineWidth: 20.0,
+            percent: (0 + 0.5),
+            animation: true,
+            animateFromLastPercent: true,
+            animationDuration: 300,
+            center: new Text('Power: ${(1) * 10 }'),
+            progressColor: Colors.redAccent,
+          ),
+        ]
+    );
+  }
+
+  Widget gaugebottom() {
+    return new Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          new CircularPercentIndicator(
+            radius: 150.0,
+            lineWidth: 20.0,
+            percent: (0 + 0.5),
+            animation: true,
+            animateFromLastPercent: true,
+            animationDuration: 300,
+            center: new Text('Power: ${(1) * 10 }'),
+            progressColor: Colors.orangeAccent,
+          ),
+          new Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+          ),
+          new CircularPercentIndicator(
+            radius: 150.0,
+            lineWidth: 20.0,
+            percent: (0 + 0.5),
+            animation: true,
+            animateFromLastPercent: true,
+            animationDuration: 300,
+            center: new Text('Power: ${(1) * 10 }'),
+            progressColor: Colors.redAccent,
+          ),
+        ]
+    );
+  }
+
 }
+
+
+
+
+
 
 class Data {
   final int id;
