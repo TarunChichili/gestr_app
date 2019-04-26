@@ -229,11 +229,11 @@ class PageTwoState extends State<PageTwo> {
           new CircularPercentIndicator(
             radius: 150.0,
             lineWidth: 20.0,
-            percent: (0 + 0.5),
+            percent: (0 + 0.132),
             animation: true,
             animateFromLastPercent: true,
             animationDuration: 300,
-            center: new Text('Power: ${(1) * 10 }'),
+            center: new Text('Power: ${(1) * 66 }'),
             progressColor: Colors.orangeAccent,
           ),
           new Padding(
@@ -242,11 +242,11 @@ class PageTwoState extends State<PageTwo> {
           new CircularPercentIndicator(
             radius: 150.0,
             lineWidth: 20.0,
-            percent: (0 + 0.5),
+            percent: (0 + 0.08),
             animation: true,
             animateFromLastPercent: true,
             animationDuration: 300,
-            center: new Text('Power: ${(1) * 10 }'),
+            center: new Text('Power: ${(1) * 42 }'),
             progressColor: Colors.redAccent,
           ),
         ]
@@ -260,11 +260,11 @@ class PageTwoState extends State<PageTwo> {
           new CircularPercentIndicator(
             radius: 150.0,
             lineWidth: 20.0,
-            percent: (0 + 0.5),
+            percent: (0 + 0.814),
             animation: true,
             animateFromLastPercent: true,
             animationDuration: 300,
-            center: new Text('Power: ${(1) * 10 }'),
+            center: new Text('Power: ${(1) * 407 }'),
             progressColor: Colors.orangeAccent,
           ),
           new Padding(
@@ -273,11 +273,11 @@ class PageTwoState extends State<PageTwo> {
           new CircularPercentIndicator(
             radius: 150.0,
             lineWidth: 20.0,
-            percent: (0 + 0.5),
+            percent: (0 + 0.628),
             animation: true,
             animateFromLastPercent: true,
             animationDuration: 300,
-            center: new Text('Power: ${(1) * 10 }'),
+            center: new Text('Power: ${(1) * 314 }'),
             progressColor: Colors.redAccent,
           ),
         ]
@@ -291,11 +291,11 @@ class PageTwoState extends State<PageTwo> {
           new CircularPercentIndicator(
             radius: 150.0,
             lineWidth: 20.0,
-            percent: (0 + 0.5),
+            percent: (0 + 0.366),
             animation: true,
             animateFromLastPercent: true,
             animationDuration: 300,
-            center: new Text('Power: ${(1) * 10 }'),
+            center: new Text('Power: ${(1) * 183 }'),
             progressColor: Colors.orangeAccent,
           ),
           new Padding(
@@ -304,11 +304,11 @@ class PageTwoState extends State<PageTwo> {
           new CircularPercentIndicator(
             radius: 150.0,
             lineWidth: 20.0,
-            percent: (0 + 0.5),
+            percent: (0 + 0.1),
             animation: true,
             animateFromLastPercent: true,
             animationDuration: 300,
-            center: new Text('Power: ${(1) * 10 }'),
+            center: new Text('Gestr #: ${(1) * 5 }'),
             progressColor: Colors.redAccent,
           ),
         ]
