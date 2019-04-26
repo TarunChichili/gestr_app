@@ -170,7 +170,7 @@ class PageTwo extends StatefulWidget {
 class PageTwoState extends State<PageTwo> {
   @override
   Widget build(BuildContext context) {
-    /*return Scaffold(
+
         body: Container(
             margin: const EdgeInsets.only(top: 100.0),
             child: Row(
@@ -185,13 +185,22 @@ class PageTwoState extends State<PageTwo> {
                 ),
               ]
             )
-        )
-    );*/
+        );
+
     return new Container(
         padding: new EdgeInsets.only(
-            left: 50.0, right: 20.0, top: 100.0, bottom: 80.0),
+            left: 50.0, right: 20.0, top: 50.0, bottom: 80.0),
+
         child: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Text(
+                'Sensor Values',
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .display1,
+              ),
               new Expanded(
                 flex: 1,
                 child: new Column(
@@ -316,13 +325,7 @@ class PageTwoState extends State<PageTwo> {
         ]
     );
   }
-
 }
-
-
-
-
-
 
 class Data {
   final int id;
