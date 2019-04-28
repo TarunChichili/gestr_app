@@ -82,6 +82,10 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.settings),
             title: Text("Settings"),
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pan_tool),
+            title: Text("Create Custom Gesture"),
+          ),
         ],
       ),
       drawer: Drawer(
