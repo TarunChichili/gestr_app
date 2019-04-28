@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'dart:io';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-void main() => runApp(MyApp());
+void main() async => runApp(MyApp());
 
 final MqttClient client = MqttClient('test.mosquitto.org', '');
 
@@ -25,13 +27,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+
+  void initMQTT() {
+
+  }
+
   final Key keyOne = PageStorageKey('pageOne');
   final Key keyTwo = PageStorageKey('pageTwo');
+  final Key keyThree = PageStorageKey('pageThree');
 
   int currentTab = 0;
 
   PageOne one;
   PageTwo two;
+  PageThree three;
   List<Widget> pages;
   Widget currentPage;
 
@@ -47,8 +57,11 @@ class _MyHomePageState extends State<MyHomePage> {
     two = PageTwo(
       key: keyTwo,
     );
+    three = PageThree(
+      key: keyThree,
+    );
 
-    pages = [one, two];
+    pages = [one, two, three];
 
     currentPage = one;
 
@@ -84,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.pan_tool),
-            title: Text("Create Custom Gesture"),
+            title: Text("Create New"),
           ),
         ],
       ),
@@ -318,6 +331,51 @@ class PageTwoState extends State<PageTwo> {
         ]
     );
   }
+}
+
+
+class PageThree extends StatefulWidget {
+  final List<Data> dataList;
+
+  PageThree({
+    Key key,
+    this.dataList,
+  }) : super(key: key);
+
+  @override
+  PageThreeState createState() => PageThreeState();
+}
+
+class PageThreeState extends State<PageThree> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+          margin: const EdgeInsets.only(top: 100.0),
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Column(
+                    children: <Widget>[
+                      Text(
+                        'Create New Gesture',
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .display1,
+                      ),
+                    ]
+                ),
+                Column(
+                    children: <Widget>[
+                    ]
+                )
+              ]
+          )
+      ),
+    );
+  }
+
 }
 
 class Data {

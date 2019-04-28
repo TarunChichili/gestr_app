@@ -57,7 +57,7 @@ Future<int> main() async {
   /// Create a connection message to use or use the default one. The default one sets the
   /// client identifier, any supplied username/password, the default keepalive interval(60s)
   /// and clean session, an example of a specific one below.
-  final MqttConnectMessage connMess = MqttConnectMessage()
+  /*final MqttConnectMessage connMess = MqttConnectMessage()
       .withClientIdentifier('Mqtt_MyClientUniqueId')
       .keepAliveFor(20) // Must agree with the keep alive set above or not set
       .withWillTopic('willtopic') // If you set this you must set a will message
@@ -65,7 +65,7 @@ Future<int> main() async {
       .startClean() // Non persistent session for testing
       .withWillQos(MqttQos.atLeastOnce);
   print('EXAMPLE::Mosquitto client connecting....');
-  client.connectionMessage = connMess;
+  client.connectionMessage = connMess;*/
 
   /// Connect the client, any errors here are communicated by raising of the appropriate exception. Note
   /// in some circumstances the broker will just disconnect us, see the spec about this, we however eill
@@ -79,23 +79,24 @@ Future<int> main() async {
 
   /// Check we are connected
   if (client.connectionStatus.state == MqttConnectionState.connected) {
-    print('EXAMPLE::Mosquitto client connected');
+    print('connected to glove');
   } else {
     /// Use status here rather than state if you also want the broker return code.
     print(
-        'EXAMPLE::ERROR Mosquitto client connection failed - disconnecting, status is ${client.connectionStatus}');
+        'connection to glove failed - disconnecting, status is ${client
+            .connectionStatus}');
     client.disconnect();
     exit(-1);
   }
 
   /// Ok, lets try a subscription
-  print('EXAMPLE::Subscribing to the test/lol topic');
-  const String topic = 'test/lol'; // Not a wildcard topic
+  print('Subscribing to the gestr/gestrCode topic');
+  const String topic = 'gestr/gestrCode'; // Not a wildcard topic
   client.subscribe(topic, MqttQos.atMostOnce);
 
   /// The client has a change notifier object(see the Observable class) which we then listen to to get
   /// notifications of published updates to each subscribed topic.
-  client.updates.listen((List<MqttReceivedMessage<MqttMessage>> c) {
+  /*client.updates.listen((List<MqttReceivedMessage<MqttMessage>> c) {
     final MqttPublishMessage recMess = c[0].payload;
     final String pt =
         MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
@@ -132,21 +133,21 @@ Future<int> main() async {
   /// Publish it
   print('EXAMPLE::Publishing our topic');
   client.publishMessage(pubTopic, MqttQos.exactlyOnce, builder.payload);
-
+  */
   /// Ok, we will now sleep a while, in this gap you will see ping request/response
   /// messages being exchanged by the keep alive mechanism.
   print('EXAMPLE::Sleeping....');
   await MqttUtilities.asyncSleep(120);
 
   /// Finally, unsubscribe and exit gracefully
-  print('EXAMPLE::Unsubscribing');
-  client.unsubscribe(topic);
+  //print('EXAMPLE::Unsubscribing');
+  //client.unsubscribe(topic);
 
   /// Wait for the unsubscribe message from the broker if you wish.
-  await MqttUtilities.asyncSleep(2);
-  print('EXAMPLE::Disconnecting');
-  client.disconnect();
-  return 0;
+  //await MqttUtilities.asyncSleep(2);
+  //print('EXAMPLE::Disconnecting');
+  //client.disconnect();
+  //return 0;
 }
 
 /// The subscribed callback
