@@ -18,7 +18,7 @@ import 'package:mqtt_client/mqtt_client.dart';
 /// If you want to use websockets rather than TCP see below.
 final MqttClient client = MqttClient('test.mosquitto.org', '');
 
-Future<int> main() async {
+Future<int> mqtt() async {
   /// A websocket URL must start with ws:// or wss:// or Dart will throw an exception, consult your websocket MQTT broker
   /// for details.
   /// To use websockets add the following lines -:
@@ -147,7 +147,7 @@ Future<int> main() async {
   //await MqttUtilities.asyncSleep(2);
   //print('EXAMPLE::Disconnecting');
   //client.disconnect();
-  //return 0;
+  return 0;
 }
 
 /// The subscribed callback
