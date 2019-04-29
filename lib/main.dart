@@ -158,7 +158,7 @@ class PageOneState extends State<PageOne> {
                               .display1,
                         ),
                         Text(
-                          'gestr',
+                          'Will display current gesture here',
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontWeight: FontWeight.bold),
