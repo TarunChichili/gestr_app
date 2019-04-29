@@ -18,7 +18,7 @@ import 'package:mqtt_client/mqtt_client.dart';
 /// If you want to use websockets rather than TCP see below.
 final MqttClient client = MqttClient('test.mosquitto.org', '');
 
-Future<int> mqtt() async {
+Future<int> main() async {
   /// A websocket URL must start with ws:// or wss:// or Dart will throw an exception, consult your websocket MQTT broker
   /// for details.
   /// To use websockets add the following lines -:
@@ -57,7 +57,7 @@ Future<int> mqtt() async {
   /// Create a connection message to use or use the default one. The default one sets the
   /// client identifier, any supplied username/password, the default keepalive interval(60s)
   /// and clean session, an example of a specific one below.
-  /*final MqttConnectMessage connMess = MqttConnectMessage()
+  final MqttConnectMessage connMess = MqttConnectMessage()
       .withClientIdentifier('Mqtt_MyClientUniqueId')
       .keepAliveFor(20) // Must agree with the keep alive set above or not set
       .withWillTopic('willtopic') // If you set this you must set a will message
@@ -65,7 +65,7 @@ Future<int> mqtt() async {
       .startClean() // Non persistent session for testing
       .withWillQos(MqttQos.atLeastOnce);
   print('EXAMPLE::Mosquitto client connecting....');
-  client.connectionMessage = connMess;*/
+  client.connectionMessage = connMess;
 
   /// Connect the client, any errors here are communicated by raising of the appropriate exception. Note
   /// in some circumstances the broker will just disconnect us, see the spec about this, we however eill
@@ -96,7 +96,7 @@ Future<int> mqtt() async {
 
   /// The client has a change notifier object(see the Observable class) which we then listen to to get
   /// notifications of published updates to each subscribed topic.
-  /*client.updates.listen((List<MqttReceivedMessage<MqttMessage>> c) {
+  client.updates.listen((List<MqttReceivedMessage<MqttMessage>> c) {
     final MqttPublishMessage recMess = c[0].payload;
     final String pt =
         MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
@@ -133,7 +133,7 @@ Future<int> mqtt() async {
   /// Publish it
   print('EXAMPLE::Publishing our topic');
   client.publishMessage(pubTopic, MqttQos.exactlyOnce, builder.payload);
-  */
+
   /// Ok, we will now sleep a while, in this gap you will see ping request/response
   /// messages being exchanged by the keep alive mechanism.
   print('EXAMPLE::Sleeping....');

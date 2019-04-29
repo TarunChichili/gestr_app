@@ -3,7 +3,8 @@ import 'package:mqtt_client/mqtt_client.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'mqtt_client.dart';
 
-void main() async => runApp(MyApp());
+
+void main() => runApp(MyApp());
 
 final MqttClient client = MqttClient('test.mosquitto.org', '');
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.lightGreen,
+        primarySwatch: Colors.teal,
       ),
       home: MyHomePage(),
     );
@@ -26,11 +27,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
-  void initMQTT() {
-
-  }
 
   final Key keyOne = PageStorageKey('pageOne');
   final Key keyTwo = PageStorageKey('pageTwo');
@@ -49,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
+
     one = PageOne(
       key: keyOne,
       dataList: dataList,
@@ -92,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            title: Text("Settings"),
+            title: Text("Sensor Values"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.pan_tool),
@@ -112,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text('Device Management',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40)),
               decoration: BoxDecoration(
-                color: Colors.lightGreen,
+                color: Colors.teal,
               ),
             ),
             ListTile(
@@ -161,7 +158,7 @@ class PageOneState extends State<PageOne> {
                               .display1,
                         ),
                         Text(
-                          'Will state current gesture here',
+                          'gestr',
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontWeight: FontWeight.bold),
